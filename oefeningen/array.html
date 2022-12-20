@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="oef">
+        <div v-for = "hond in honden">
+            <p>{{hond.naam}}</p>
+        </div>
+
+    </div>
+    <script>
+                const oef = {
+
+                    data () {
+                        return {
+                            honden :[   {naam: "Rolf"},
+   		                                {naam: "Bruto"},
+   		                                {naam: "Kaizer"},
+   		                                {naam: "Kazan"}
+                        ]
+
+                        }
+                    }
+
+
+                }
+Vue.createApp(oef).mount('#oef')
+    </script>
+</body>
+</html>

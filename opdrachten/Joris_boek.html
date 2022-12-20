@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="boek">
+        <p>Geef de Titel in aub.</p>
+        <input v-model ="titel">
+        <p>Geef de prijs in aub.</p>
+        <input v-model ="prijs">
+        <p>Geef het aantal stuks in aub.</p>
+        <input v-model ="aantalstuks">
+        <p>voor {{aantalstuks}} stuk(s) van het boek {{titel}}, tegen een kostprijs van {{prijs}}, betaal je {{aantalstuks * prijs}}€</p> 
+
+
+    </div>
+
+
+    <script>
+        const boek = {
+
+            data () {
+                 return {
+                 titel:"",
+                 prijs:"",
+                 aantalstuks:""
+                 }
+             }
+
+
+        }
+        Vue.createApp(boek).mount('#boek')
+
+    </script>
+    
+</body>
+</html>

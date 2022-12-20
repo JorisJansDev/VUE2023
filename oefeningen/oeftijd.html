@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+<div id="klok">
+    <div v-show= "tijd > 7 && tijd < 12">
+        Goeiemorgen
+    </div>
+    <div v-show= "tijd >= 12 && tijd < 18" >
+        Goeiemiddag
+    </div>
+    <div v-show = "tijd >= 18 && tijd < 22 ">
+        Goeieavond
+
+    </div>
+    <div v-show= "tijd >= 22 || tijd <= 7" >
+        Goeienacht 
+    </div>
+</div>
+
+    <script>
+         const klok = {
+
+            data () {
+                     return {
+                         tijd : 12
+                         }
+                    }
+
+
+        }
+        
+Vue.createApp(klok).mount('#klok')
+
+    </script>
+</body>
+</html>
