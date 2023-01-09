@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <style>
+        .red{
+            color : red;
+        }
+        .green{
+            color :green
+        }
+    </style>
+
+    <div id="app">
+    <h1 v-html="titel"></h1>
+
+     <div v-for = "magazine in magazines">
+        
+        <div v-for = "(value, prop) in magazine">
+            <h2 :class="{green: magazine.doelgroep.length != 0 && magazine.prijs.length != 0, red: magazine.doelgroep.length == 0 || magazine.prijs.length == 0 }" v-if =" prop == 'naam'">
+            {{value}}
+            </h2>
+            <p class="red" v-else-if="value.length == 0">
+                De {{prop}} ontbreekt!
+            </p>
+            <p v-else>
+            {{prop}}: {{value}} 
+            </p>
+        </div>
+     </div>
+
+     Naam: <input v-model="newNaam">
+     Doelgroep: <input v-model="newDoelgroep">
+     Prijs: <input v-model="newPrijs">
+     <button v-on:click="addNewMagazine()">Voeg toe</button>
+     
+
+
+    </div>
+
+
+
+
+<script>
+const app = {
+
+        data () {
+            return {
+                titel: "<i>Magazines</i>",
+                magazines: [
+                            {naam: "Libelle", doelgroep: "vrouwen", prijs: 4.75},
+                            {naam: "Knack", doelgroep: "", prijs: 6.25},
+                            {naam: "Humo", doelgroep: "gemengd", prijs: ""}
+                        ],
+                newNaam: "",
+                newDoelgroep:"",
+                newPrijs: ""
+                    }
+                 },
+
+             methods: {
+                addNewMagazine: function () {
+                    if(this.newNaam.length == 0){
+                        alert("gelieve minstens de naam in te geven")
+                    }
+                    else{
+                    let pushen ={
+                        naam:this.newNaam,
+                        doelgroep:this.newDoelgroep,
+                        prijs:this.newPrijs
+                    }
+                    this.magazines.push(pushen);
+                    this.newNaam ="";
+                    this.newDoelgroep = "";
+                    this.newPrijs = "";
+
+                    }
+                }
+            }
+            
+        }
+
+    Vue.createApp(app).mount('#app')
+</script>
+    
+</body>
+</html>

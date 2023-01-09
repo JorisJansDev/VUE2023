@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+
+
+
+
+
+    <div id="app">
+        <input v-model="newName">
+        <button v-on:click="mijnNaam()">Voeg toe</button>
+        <p>Voornaam : {{voornaam}}</p>
+        <p>Achternaam : {{achternaam}}</p>
+        <p>{{mijnDetails()}}</p>
+        <p v-for="naam in namen">
+            {{naam}}
+        
+        </p>
+     </div>
+     
+    <script>const app = {
+        data: function () {
+            return {
+                voornaam: "Ronny",
+                achternaam: "Renders",
+                land: "België",
+                namen: []
+            }
+        },
+        methods: {
+            mijnDetails: function () {
+                return "Ik ben " + this.voornaam + " " + this.achternaam + " uit " + this.land;
+            },
+            mijnNaam: function(){
+                this.namen.push(this.newName);
+                this.newName = "";
+
+            }
+        }
+    }
+
+    Vue.createApp(app).mount('#app')
+    </script>
+
+</body>
+</html>
